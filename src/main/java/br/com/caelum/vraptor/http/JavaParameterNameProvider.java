@@ -9,6 +9,8 @@ import java.lang.reflect.Method;
 
 import javax.annotation.Priority;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
+import javax.interceptor.Interceptor;
 
 /**
  * Provides parameter names for a {@link Method} or {@link Constructor}. This class is really not necessary
@@ -18,8 +20,9 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Otávio Scherer Garcia
  */
 @ApplicationScoped
-public class JavaParameterNameProvider
-	implements ParameterNameProvider {
+@Alternative
+@Priority(Interceptor.Priority.LIBRARY_AFTER + 10)
+public class JavaParameterNameProvider implements ParameterNameProvider {
 
 	@Override
 	public Parameter[] parametersFor(AccessibleObject executable) {
