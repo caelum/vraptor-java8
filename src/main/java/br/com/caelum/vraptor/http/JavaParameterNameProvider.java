@@ -12,6 +12,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Alternative;
 import javax.interceptor.Interceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Provides parameter names for a {@link Method} or {@link Constructor}. This class is really not necessary
  * since JDK 8 can discovery natively. But keep easily to maintain a branch compatible with JDK 1.7 that needs
@@ -24,6 +27,8 @@ import javax.interceptor.Interceptor;
 @Priority(Interceptor.Priority.LIBRARY_AFTER + 10)
 public class JavaParameterNameProvider implements ParameterNameProvider {
 
+	private static final Logger logger = LoggerFactory.getLogger(JavaParameterNameProvider.class);
+
 	@Override
 	public Parameter[] parametersFor(AccessibleObject executable) {
 		checkState(executable instanceof Executable, "Only methods or constructors are available");
@@ -35,6 +40,7 @@ public class JavaParameterNameProvider implements ParameterNameProvider {
 			out[i] = new Parameter(i, parameters[i].getName(), executable);
 		}
 
+		logger.debug("parameter names for {}: {}", executable, out);
 		return out;
 	}
 
