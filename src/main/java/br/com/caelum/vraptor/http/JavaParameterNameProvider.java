@@ -47,8 +47,6 @@ public class JavaParameterNameProvider implements ParameterNameProvider {
 
 	@Override
 	public Parameter[] parametersFor(AccessibleObject executable) {
-		checkState(executable instanceof Executable, "Only methods or constructors are available");
-
 		java.lang.reflect.Parameter[] parameters = getMethodParameters(executable);
 		Parameter[] out = new Parameter[parameters.length];
 
@@ -61,6 +59,7 @@ public class JavaParameterNameProvider implements ParameterNameProvider {
 	}
 
 	private java.lang.reflect.Parameter[] getMethodParameters(AccessibleObject executable) {
+		checkState(executable instanceof Executable, "Only methods or constructors are available");
 		return ((Executable) executable).getParameters();
 	}
 }
