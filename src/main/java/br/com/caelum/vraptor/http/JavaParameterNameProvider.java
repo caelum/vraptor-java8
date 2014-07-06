@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
  */
 @ApplicationScoped
 @Alternative
-@Priority(Interceptor.Priority.LIBRARY_AFTER + 10)
+@Priority(Interceptor.Priority.LIBRARY_BEFORE + 10)
 public class JavaParameterNameProvider implements ParameterNameProvider {
 
 	private static final Logger logger = LoggerFactory.getLogger(JavaParameterNameProvider.class);
