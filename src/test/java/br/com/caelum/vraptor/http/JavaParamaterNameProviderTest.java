@@ -22,6 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.hamcrest.Matchers;
 import org.junit.Before;
@@ -74,6 +75,6 @@ public class JavaParamaterNameProviderTest {
 	}
 
 	private List<String> toNames(Parameter[] parameters) {
-		return asList(parameters).stream().map(p -> p.getName()).collect(toList());
+		return Stream.of(parameters).map(Parameter::getName).collect(toList());
 	}
 }
