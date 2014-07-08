@@ -16,7 +16,6 @@
  */
 package br.com.caelum.vraptor.http;
 
-import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 
