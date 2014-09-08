@@ -51,11 +51,21 @@ public class JavaParameterNameProvider implements ParameterNameProvider {
 		Parameter[] out = new Parameter[parameters.length];
 
 		for (int i = 0; i < out.length; i++) {
+			checkIfNameIsPresent(parameters[i]);
 			out[i] = new Parameter(i, parameters[i].getName(), executable);
 		}
 
 		logger.debug("parameter names for {}: {}", executable, out);
 		return out;
+	}
+
+	private void checkIfNameIsPresent(java.lang.reflect.Parameter parameter) {
+		if (!parameter.isNamePresent()) {
+			String msg = String.format("Parameters isn't present for %s. You must compile your code with -parameters argument.", 
+					parameter.getDeclaringExecutable().getName());
+			throw new IllegalStateException(msg);
+		}
+
 	}
 
 	private java.lang.reflect.Parameter[] getMethodParameters(AccessibleObject executable) {
