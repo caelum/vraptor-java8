@@ -22,6 +22,7 @@ import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 import javax.annotation.Priority;
 import javax.enterprise.context.ApplicationScoped;
@@ -55,7 +56,10 @@ public class JavaParameterNameProvider implements ParameterNameProvider {
 			out[i] = new Parameter(i, parameters[i].getName(), executable);
 		}
 
-		logger.debug("parameter names for {}: {}", executable, out);
+		if (logger.isDebugEnabled()) {
+			logger.debug("parameter names for {}: {}", executable, Arrays.toString(out));
+		}
+
 		return out;
 	}
 
@@ -63,7 +67,7 @@ public class JavaParameterNameProvider implements ParameterNameProvider {
 		if (!parameter.isNamePresent()) {
 			String msg = String.format("Parameters aren't present for %s. You must compile your code with -parameters argument.", 
 					parameter.getDeclaringExecutable().getName());
-			throw new IllegalStateException(msg);
+			throw new AssertionError(msg);
 		}
 
 	}
