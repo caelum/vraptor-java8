@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>br.com.caelum</groupId>
 			<artifactId>vraptor</artifactId>
-			<version>4.1.0-RC3</version>
+			<version>4.1.1</version>
 		</dependency>
 
 		<dependency>
