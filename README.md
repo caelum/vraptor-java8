@@ -17,3 +17,19 @@ For a quick start, you can use this snippet in your maven POM:
     <version>4.0.0.Final</version> <!--or the latest version-->
 </dependency>
 ```
+
+And to allow parameter discovery you need to add the parameter `-parameters` in your compiler. Or if you use Maven you must add this option to your compiler plugin:
+
+```xml
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<configuration>
+		<source>1.8</source>
+		<target>1.8</target>
+		<compilerArguments>
+			<parameters />
+		</compilerArguments>
+	</configuration>
+</plugin>
+```
