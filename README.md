@@ -14,7 +14,7 @@ For a quick start, you can use this snippet in your maven POM:
 <dependency>
     <groupId>br.com.caelum.vraptor</groupId>
     <artifactId>vraptor-java8</artifactId>
-    <version>4.1.1</version> <!--or the latest version-->
+    <version>4.0.0.Final</version> <!--or the latest version-->
 </dependency>
 ```
 
