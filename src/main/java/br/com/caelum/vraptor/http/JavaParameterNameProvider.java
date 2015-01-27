@@ -65,7 +65,7 @@ public class JavaParameterNameProvider implements ParameterNameProvider {
 
 	private void checkIfNameIsPresent(java.lang.reflect.Parameter parameter) {
 		if (!parameter.isNamePresent()) {
-			String msg = String.format("Parameters aren't present for %s. You must compile your code with -parameters argument.", 
+			String msg = String.format("Parameters aren't present for %s. You must compile your code with -parameters argument. \n If you are using eclipse, set 'Store information about method parameters' to true at 'Compiler' options", 
 					parameter.getDeclaringExecutable().getName());
 			throw new AssertionError(msg);
 		}
