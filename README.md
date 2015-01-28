@@ -18,7 +18,12 @@ For a quick start, you can use this snippet in your maven POM:
 </dependency>
 ```
 
-And to allow parameter discovery you need to add the parameter `-parameters` in your compiler. Or if you use Maven you must add this option to your compiler plugin:
+##How to alow parameter discovery
+
+To allow parameter discovery you need to add the parameter `-parameters` in your compiler.
+
+### Using maven
+If you are using Maven you must add this option to your compiler plugin:
 
 ```xml
 <plugin>
@@ -33,3 +38,7 @@ And to allow parameter discovery you need to add the parameter `-parameters` in 
 	</configuration>
 </plugin>
 ```
+
+### Using eclipse
+
+If you are using eclipse, check  the box 'Store information about method parameters' at Preferences > Compiler options
